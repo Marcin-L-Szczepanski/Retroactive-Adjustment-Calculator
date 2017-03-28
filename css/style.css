@@ -1,0 +1,152 @@
+    body {
+      font-family: Calibri;
+      font-size: 11.0pt;
+      margin-top: 30px;
+      margin-left: 50px;
+    }
+    #container {
+      width: 560px;
+      position: relative;
+    }
+    h4 {
+      margin: 10px 0 0 0;
+      background-color: #f2f2f2;
+      width: 170px;
+    }
+    #shortcuts {
+            position: fixed;
+	    z-index: -1;
+            bottom: 40px;
+            right: 40px;
+            background-color: #f7f7f7;
+            padding: 2px;
+            border: #a0a0a0 solid 1px;
+            border-radius: 3px;
+        } 
+    .inline {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 30px;
+    }
+    .manualCalendarInfo {
+      position: relative;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #ffeecc;
+      width: 550px;
+      -webkit-animation: fadeEffect 0.5s;
+      animation: fadeEffect 0.5s;
+    }
+    @-webkit-keyframes fadeEffect {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeEffect {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    #workDays {
+      font-weight: bold;
+      font-size: 20px;
+      background-color: #ffdd99;
+      border-radius: 4px;
+      padding: 5px;
+      display: inline-block;
+    }
+    #changeShow {
+      margin-left: 7px;
+    }
+    select {
+      width: 170px; 
+      padding: 3px 5px;
+      margin: 4px 0 13px 0;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+    }
+    select:focus {
+      border: 2px solid #000;
+    }
+    input {
+      width: 190px;
+      padding: 3px 5px;
+      margin: 4px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+    input:focus {
+      border: 2px solid #000;
+    }
+    input[type=text] {
+      width: 170px;
+    }
+    textarea {
+      width: 42em;
+      height: 10em;
+      padding: 3px 5px;
+      margin: 4px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      -webkit-transition: 1s;
+      transition: 1s;
+      outline: none;
+    }
+    textarea:focus {
+      border: 2px solid #000;
+    }
+    button {
+      margin-top: 5px;
+      -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+      -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+      box-shadow: inset 0px 1px 0px 0px #ffffff;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
+      background: -moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+      background: -webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+      background: -o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+      background: -ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+      background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+      filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9', GradientType=0);
+      background-color: #f9f9f9;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      border: 1px solid #dcdcdc;
+      display: inline-block;
+      cursor: pointer;
+      color: #666666;
+      font-family: Arial;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 24px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #ffffff;
+    }
+    button:hover {
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
+      background: -moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+      background: -webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+      background: -o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+      background: -ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+      background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+      filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9', GradientType=0);
+      background-color: #e9e9e9;
+    }
+    button:active {
+      position: relative;
+      top: 1px;
+    }
+    td {
+      padding: 0;
+    }
