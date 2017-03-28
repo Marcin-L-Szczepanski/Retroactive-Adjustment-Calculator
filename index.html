@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>Retroactive Adjustment Calculator</title>
+</head>
+<body onkeydown="if ((event.altKey) && (event.keyCode == 80)) printhidden();">
+  <h2>Retroactive Adjustment Calculator</h2>
+  <div class="inline">
+    <h4><label for="calendarType">Calendar Type:</label></h4>
+    <select id="calendarType">
+        <option value="0">Calendar</option>
+        <option value="1">Business Calendar</option>
+        <option selected="selected" value="2">Manual Calendar</option>
+    </select><br /> </div>
+
+  <div class="inline">
+    <h4>Payroll Month:</h4>
+    <input type="text" id="payrollYear" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"> /
+    <input type="text" id="payrollMonth" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"> <br>
+    <label for="payrollYear">&nbsp;&nbsp;&nbsp;Year </label>
+    <label for="payrollMonth">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Month</label><br>
+  </div>
+
+
+  <hr align="left" style="width: 780px;">
+
+  <div class="inline">
+    <label for="employeeName"><h4>Employee Name:</h4></label>
+    <input type="text" id="employeeName" autofocus autocomplete="off" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"><br />
+
+    <h4>New commuting start date:</h4>
+    <input type="text" id="commutingChangeYear" value="2017" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"> /
+    <input type="text" id="commutingChangeMonth" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"> /
+    <input type="text" id="commutingChangeDay" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()"><br>
+    <label for="commutingChangeYear">&nbsp;&nbsp;&nbsp;Year </label>
+    <label for="commutingChangeMonth">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Month</label>
+    <label for="commutingChangeDay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Day</label><br>
+  </div>
+
+  <div class="inline"><br><br><br><br>
+    <table>
+      <tr>
+        <td>
+          <label for="oldCommuting"><h4 style="margin: 0px;">Old Commuting Amount:</h4></label>
+        </td>
+        <td>
+          <input type="text" id="oldCommuting" autocomplete="off" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="newCommuting"><h4 style="margin: 0px;">New Commuting Amount:</h4></label>
+        </td>
+        <td>
+          <input type="text" id="newCommuting" autocomplete="off" onkeydown="if (event.keyCode == 13) document.getElementById('button').click()">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br><br>
+  <div class="manualCalendarInfo" id="manualWorkDays" style="display: none;">
+    <label id="workDaysLabel" for="workDays"></label><span id="workDays"></span>
+    <button id="changeShow" onclick="changeShow()" style="position: absolute; right: 10px">Change</button>
+  </div>
+  <div class="manualCalendarInfo" id="changeManualWorkDays" style="display: none;">
+    <table>
+      <tr>
+        <td>
+          <label for="daysBeforeChange">Days before change: </label>
+        </td>
+        <td>
+          <input type="text" name="daysBeforeChange" id="daysBeforeChange" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('confirmChange').click()">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="daysAfterChange">Days after change:</label>
+        </td>
+        <td>
+          <input type="text" name="daysAfterChange" id="daysAfterChange" autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) document.getElementById('confirmChange').click()">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label id="changeWorkDaysLabel" for="manualMonthWorkDays">Total Work Days:</label>
+        </td>
+        <td>
+          <input type="text" name="manualMonthWorkDays" id="manualMonthWorkDays" readonly autocomplete="off" style="width: 50px;" onkeydown="if (event.keyCode == 13) { document.getElementById('confirmChange').click() } else if (event.keyCode == 8) { document.getElementById('daysAfterChange').select() }">
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div id="container" class="inline">
+    <button id="confirmChange" style="display: none;">Generate Memo</button>
+    <button id="button" onclick="proration()">Generate Memo</button>
+    <button id="selectButton" onclick="selectArea()" style="display: none; position: absolute; top: 0px; right: 90px">Select</button>
+    <button id="printButton" onclick="printArea('memoArea')" style="display: none; position: absolute; top: 0px; right: 0px">Print</button><br />
+    <hr align="left" style="width: 780px;">
+    <textarea readonly id="memoArea">
+Enter information above and click the button...</textarea>
+  </div>
+
+  <div id="retroInfo_div">
+    <br><br><br>
+    <div id="payrollMonthAmount_div" style="display: none;">
+      <h4 id="payrollMonthAmount_label"></h4>
+      <input type="text" id="payrollMonthAmount_input" readonly> <br>
+    </div>
+    <div id="retroChangeMonthAmount_div" style="display: none;">
+      <h4 id="retroChangeMonthAmount_label"></h4>
+      <input type="text" id="retroChangeMonthAmount_input" readonly> <br>
+    </div>
+    <div id="retroBeforePayrollMonthAmount_div" style="display: none;">
+      <h4 id="retroBeforePayrollMonthAmount_label"></h4>
+      <input type="text" id="retroBeforePayrollMonthAmount_input" readonly> <br>
+    </div>
+    <div id="retroPayrollMonthAmount_div" style="display: none;">
+      <h4 id="retroPayrollMonthAmount_label"></h4>
+      <input type="text" id="retroPayrollMonthAmount_input" readonly> <br>
+    </div>
+  </div>
+  <div id="shortcuts">
+    <em>Keyboard shortcuts:</em><br>
+    <strong>TAB</strong>: next cell<br>
+    <strong>Shift + TAB</strong>: previous cell<br>
+    <strong>Enter</strong>: generate memo<br>
+    <strong>Double Enter</strong>: select memo<br>
+    <strong>Alt + p</strong>: print memo
+  </div>
+</body>
+</html>
