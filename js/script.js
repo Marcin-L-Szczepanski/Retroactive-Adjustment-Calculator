@@ -424,3 +424,12 @@ function printArea(areaName) {
         childWindow.document.close();
         childWindow.close();
 }
+
+
+var vueTest = new Vue({
+   el: '#vueTest',
+   data: {
+       message: 'Test Message'
+   }
+    
+})
