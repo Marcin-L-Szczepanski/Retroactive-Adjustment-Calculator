@@ -1,3 +1,5 @@
+var globalValidationOK = true;
+
     var monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var payrollDate = new Date();                     // current date = default payroll date
     var payrollMonth = payrollDate.getMonth() + 1;    // current month; January is 0
@@ -181,6 +183,7 @@
         // Validation
 	    // default setting - validation OK
             var validationOK = true;
+            globalValidationOK = validationOK;
             var error = "";
             var daysBeforeChange = $("#daysBeforeChange").val();
             var daysAfterChange = $("#daysAfterChange").val();
@@ -429,7 +432,8 @@ function printArea(areaName) {
 var vueTest = new Vue({
    el: '#vueTest',
    data: {
-       message: 'Test Message'
-   }
+       message: 'Siema',
+       validation: globalValidationOK
+   },
     
 })
